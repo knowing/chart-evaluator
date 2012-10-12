@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="chart-evaluator"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="appName"
+               value="chart-evaluator">
+         </property>
+         <property
+               name="applicationXMI"
+               value="chart-evaluator/Application.e4xmi">
+         </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/chart-evaluator/css/default.css">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
