@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package chart_evaluator.handlers;
+package de.lmu.ifi.dbs.chartevaluator.ui.handlers;
 
 import java.lang.reflect.InvocationTargetException;
 

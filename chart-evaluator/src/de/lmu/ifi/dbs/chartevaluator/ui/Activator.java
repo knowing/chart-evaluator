@@ -1,4 +1,4 @@
-package chart_evaluator;
+package de.lmu.ifi.dbs.chartevaluator.ui;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

@@ -4,8 +4,8 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_H1z0BBR5EeKPkb5nHE4Zzw">
       <children xsi:type="advanced:Perspective" xmi:id="_H1z0BRR5EeKPkb5nHE4Zzw">
         <children xsi:type="basic:PartSashContainer" xmi:id="_H1z0BhR5EeKPkb5nHE4Zzw">
-          <children xsi:type="basic:Part" xmi:id="_4ZHVIBR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.result" contributionURI="bundleclass://chart-evaluator/chart_evaluator.Result" label="Result"/>
-          <children xsi:type="basic:Part" xmi:id="_-reEABR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.options" contributionURI="bundleclass://chart-evaluator/chart_evaluator.Options" label="Options"/>
+          <children xsi:type="basic:Part" xmi:id="_4ZHVIBR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.result" containerData="80" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.ResultComponent" label="Result"/>
+          <children xsi:type="basic:Part" xmi:id="_-reEABR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.options" containerData="20" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.OptionsComponent" label="Options"/>
         </children>
       </children>
     </children>
@@ -26,10 +26,10 @@
       </children>
     </trimBars>
   </children>
-  <handlers xmi:id="_H1zM8BR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/chart_evaluator.handlers.QuitHandler" command="_H1yl6hR5EeKPkb5nHE4Zzw"/>
-  <handlers xmi:id="_H1zM9BR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/chart_evaluator.handlers.OpenHandler" command="_H1zM8xR5EeKPkb5nHE4Zzw"/>
-  <handlers xmi:id="_H1zM9xR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/chart_evaluator.handlers.SaveHandler" command="_H1zM9hR5EeKPkb5nHE4Zzw"/>
-  <handlers xmi:id="_H1zM-hR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/chart_evaluator.handlers.AboutHandler" command="_H1zM-RR5EeKPkb5nHE4Zzw"/>
+  <handlers xmi:id="_H1zM8BR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.handlers.QuitHandler" command="_H1yl6hR5EeKPkb5nHE4Zzw"/>
+  <handlers xmi:id="_H1zM9BR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.handlers.OpenHandler" command="_H1zM8xR5EeKPkb5nHE4Zzw"/>
+  <handlers xmi:id="_H1zM9xR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.handlers.SaveHandler" command="_H1zM9hR5EeKPkb5nHE4Zzw"/>
+  <handlers xmi:id="_H1zM-hR5EeKPkb5nHE4Zzw" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.handlers.AboutHandler" command="_H1zM-RR5EeKPkb5nHE4Zzw"/>
   <bindingTables xmi:id="_H1zM8RR5EeKPkb5nHE4Zzw" bindingContext="_H1yl4RR5EeKPkb5nHE4Zzw">
     <bindings xmi:id="_H1zM8hR5EeKPkb5nHE4Zzw" keySequence="M1+Q" command="_H1yl6hR5EeKPkb5nHE4Zzw"/>
     <bindings xmi:id="_H1zM9RR5EeKPkb5nHE4Zzw" keySequence="M1+O" command="_H1zM8xR5EeKPkb5nHE4Zzw"/>
