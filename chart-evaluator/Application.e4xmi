@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_H1yl4BR5EeKPkb5nHE4Zzw" elementId="org.eclipse.e4.ide.application" bindingContexts="_H1yl4RR5EeKPkb5nHE4Zzw">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_H1yl4BR5EeKPkb5nHE4Zzw" elementId="org.eclipse.e4.ide.application" bindingContexts="_H1yl4RR5EeKPkb5nHE4Zzw">
   <children xsi:type="basic:TrimmedWindow" xmi:id="_H1zM_BR5EeKPkb5nHE4Zzw" label="chart-evaluator" width="500" height="400">
-    <children xsi:type="advanced:PerspectiveStack" xmi:id="_H1z0BBR5EeKPkb5nHE4Zzw">
-      <children xsi:type="advanced:Perspective" xmi:id="_H1z0BRR5EeKPkb5nHE4Zzw">
-        <children xsi:type="basic:PartSashContainer" xmi:id="_H1z0BhR5EeKPkb5nHE4Zzw">
-          <children xsi:type="basic:Part" xmi:id="_4ZHVIBR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.result" containerData="80" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.ResultComponent" label="Result"/>
-          <children xsi:type="basic:Part" xmi:id="_-reEABR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.options" containerData="20" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.OptionsComponent" label="Options"/>
-        </children>
-      </children>
+    <children xsi:type="basic:PartSashContainer" xmi:id="_H1z0BhR5EeKPkb5nHE4Zzw">
+      <children xsi:type="basic:Part" xmi:id="_4ZHVIBR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.result" containerData="80" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.ResultComponent" label="Result"/>
+      <children xsi:type="basic:Part" xmi:id="_-reEABR7EeKPkb5nHE4Zzw" elementId="chart-evaluator.part.options" containerData="20" contributionURI="bundleclass://chart-evaluator/de.lmu.ifi.dbs.chartevaluator.ui.OptionsComponent" label="Options"/>
     </children>
     <mainMenu xmi:id="_H1zM_RR5EeKPkb5nHE4Zzw" elementId="menu:org.eclipse.ui.main.menu">
       <children xsi:type="menu:Menu" xmi:id="_H1zM_hR5EeKPkb5nHE4Zzw" label="File">
