@@ -2,21 +2,37 @@ package de.lmu.ifi.dbs.chartevaluator.ui;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+
 
 public class OptionsComponent {
+	
+	@Inject
+	private IEventBroker eventBroker; 
+	
+	Scale scale_numData;
+	Combo comboBar_chartType;
+	Combo comboBar_chartLib;
+	int datasetSize = 0;
+	String option_chartType = "";
+	
 
 	public OptionsComponent() {
 	}
-
+	
+	
 	/**
 	 * Create contents of the view part.
 	 */
@@ -24,23 +40,61 @@ public class OptionsComponent {
 	public void createControls(Composite parent) {
 		parent.setLayout(new GridLayout(4, false));
 		
-		CCombo comboBar_chartLib = new CCombo(parent, SWT.BORDER);
+		
+		//choose chart library
+		comboBar_chartLib = new Combo(parent, SWT.BORDER);
 		comboBar_chartLib.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 		comboBar_chartLib.setItems(new String[] {"Lib1", "Lib2", "Lib3"});
 		comboBar_chartLib.setText("Chart Library");
 		
-		CCombo comboBar_chartType = new CCombo(parent, SWT.BORDER);
+		
+		//choose chart type
+		ChartProvider.JFreeChartTypes[] chartTypes = ChartProvider.JFreeChartTypes.values();
+		String[] chTypes = new String[chartTypes.length];
+		for (int i = 0; i < chartTypes.length; i++) {
+			chTypes[i] = chartTypes[i].toString();
+		}
+		
+		comboBar_chartType = new Combo(parent, SWT.BORDER);
 		comboBar_chartType.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
-		comboBar_chartType.setItems(new String[] {"Bar", "Area", "Pie", "Bubble"});
+		comboBar_chartType.setItems(chTypes);
 		comboBar_chartType.setText("Chart Type");
+
+		comboBar_chartType.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				option_chartType = comboBar_chartType.getItem(comboBar_chartType.getSelectionIndex());
+			}
+		});
 		
-		Scale scale_numData = new Scale(parent, SWT.NONE);
+		
+		//choose dataset size
+		scale_numData = new Scale(parent, SWT.NONE);
 		scale_numData.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		scale_numData.setMaximum(1000000);
+		scale_numData.setMaximum(1000);
+		scale_numData.setToolTipText("Size: " + datasetSize);
+		scale_numData.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				datasetSize = scale_numData.getSelection();
+				scale_numData.setToolTipText("Size: " + datasetSize);
+			}
+		});
+
 		
+		//submit choices
 		Button button_Run = new Button(parent, SWT.NONE);
 		button_Run.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		button_Run.setText("Run");
+		button_Run.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ChartProperties prop = new ChartProperties();
+				prop.SetType(option_chartType);
+				prop.SetSize(datasetSize);
+				eventBroker.post(ResultComponent.TOPIC_NEWDATA, prop);
+			}
+		});
+
 	}
 
 	@PreDestroy
@@ -51,5 +105,9 @@ public class OptionsComponent {
 	public void setFocus() {
 		// TODO	Set the focus to control
 	}
+	
 
+
+
+	
 }
