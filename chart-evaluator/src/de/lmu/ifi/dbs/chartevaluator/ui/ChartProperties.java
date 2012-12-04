@@ -2,23 +2,23 @@ package de.lmu.ifi.dbs.chartevaluator.ui;
 
 
 public class ChartProperties {
-	public int datasetSize = 0;
+	public int datasetSize;
 	
-	private String chartType = "XYSplineRenderer";
+	private ChartProvider.JFreeChartTypes chartType;
 	
-	public String GetType(){
+	public ChartProvider.JFreeChartTypes getType(){
 		return this.chartType;
 	}
 	
-	public void SetType(String type){
+	public void setType(ChartProvider.JFreeChartTypes type){
 		this.chartType = type;
 	}
 	
-	public int GetSize(){
+	public int getSize(){
 		return this.datasetSize;
 	}
 	
-	public void SetSize(int size){
+	public void setSize(int size){
 		this.datasetSize = size;
 	}
 

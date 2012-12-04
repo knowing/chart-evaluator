@@ -21,7 +21,7 @@ public class ChartProv implements ChartProvider<JFreeChart>{
 
 	public JFreeChart createChart(ChartProperties properties){
 		
-		if(properties.GetType().equals("XYSplineRenderer")){
+		if(properties.getType().equals(ChartProvider.JFreeChartTypes.XYSplineRenderer)){
 			
 	        NumberAxis xAxis = new NumberAxis("Time");
 	        xAxis.setAutoRangeIncludesZero(false);
@@ -29,24 +29,24 @@ public class ChartProv implements ChartProvider<JFreeChart>{
 	        yAxis.setAutoRangeIncludesZero(false);
 
 	        XYSplineRenderer renderer = new XYSplineRenderer();
-	        XYPlot plot = new XYPlot(SampleDataFactory.SampleDataSpline(properties.GetSize()), xAxis, yAxis, renderer);
+	        XYPlot plot = new XYPlot(SampleDataFactory.SampleDataSpline(properties.getSize()), xAxis, yAxis, renderer);
 	        plot.setAxisOffset(new RectangleInsets(4, 4, 4, 4));
 	        JFreeChart splinechart = new JFreeChart("XYSplineRenderer", JFreeChart.DEFAULT_TITLE_FONT, plot, true);
 	        ChartUtilities.applyCurrentTheme(splinechart);
 	        
 	        this.chart = splinechart;
 	        
-		} else if(properties.GetType().equals("PieChart")){
+		} else if(properties.getType().equals(ChartProvider.JFreeChartTypes.PieChart)){
 
-			JFreeChart piechart = ChartFactory.createPieChart("Piechart", SampleDataFactory.SampleDataPie(properties.GetSize()), true, true, false);
+			JFreeChart piechart = ChartFactory.createPieChart("Piechart", SampleDataFactory.SampleDataPie(properties.getSize()), true, true, false);
 			PiePlot plot = (PiePlot) piechart.getPlot();
 			plot.setCircular(true);
 			
 			this.chart = piechart;
 			
-		} else if(properties.GetType().equals("XYBarChart")){					
+		} else if(properties.getType().equals(ChartProvider.JFreeChartTypes.XYBarChart)){					
 		    
-		        JFreeChart barchart = ChartFactory.createXYBarChart("XYBarChart", "X", true, "Y", SampleDataFactory.SampleDataBar(properties.GetSize()), PlotOrientation.HORIZONTAL, true, false, false);
+		        JFreeChart barchart = ChartFactory.createXYBarChart("XYBarChart", "X", true, "Y", SampleDataFactory.SampleDataBar(properties.getSize()), PlotOrientation.HORIZONTAL, true, false, false);
 
 		        XYPlot plot = (XYPlot) barchart.getPlot();
 		        plot.setRangeAxis(new DateAxis("Date"));

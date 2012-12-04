@@ -26,7 +26,7 @@ public class OptionsComponent {
 	Combo comboBar_chartType;
 	Combo comboBar_chartLib;
 	int datasetSize = 0;
-	String option_chartType = "";
+	ChartProvider.JFreeChartTypes option_chartType;
 	
 
 	public OptionsComponent() {
@@ -44,7 +44,7 @@ public class OptionsComponent {
 		//choose chart library
 		comboBar_chartLib = new Combo(parent, SWT.BORDER);
 		comboBar_chartLib.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
-		comboBar_chartLib.setItems(new String[] {"Lib1", "Lib2", "Lib3"});
+		comboBar_chartLib.setItems(new String[] {"JFreeChart"});
 		comboBar_chartLib.setText("Chart Library");
 		
 		
@@ -63,7 +63,7 @@ public class OptionsComponent {
 		comboBar_chartType.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				option_chartType = comboBar_chartType.getItem(comboBar_chartType.getSelectionIndex());
+				option_chartType = ChartProvider.JFreeChartTypes.valueOf(comboBar_chartType.getItem(comboBar_chartType.getSelectionIndex()));
 			}
 		});
 		
@@ -89,8 +89,8 @@ public class OptionsComponent {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				ChartProperties prop = new ChartProperties();
-				prop.SetType(option_chartType);
-				prop.SetSize(datasetSize);
+				prop.setType(option_chartType);
+				prop.setSize(datasetSize);
 				eventBroker.post(ResultComponent.TOPIC_NEWDATA, prop);
 			}
 		});
