@@ -71,7 +71,7 @@ public class OptionsComponent {
 		//choose dataset size
 		scale_numData = new Scale(parent, SWT.NONE);
 		scale_numData.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		scale_numData.setMaximum(1000);
+		scale_numData.setMaximum(100000);
 		scale_numData.setToolTipText("Size: " + datasetSize);
 		scale_numData.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {

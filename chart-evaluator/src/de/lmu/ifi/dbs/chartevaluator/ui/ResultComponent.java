@@ -21,13 +21,21 @@ import org.eclipse.swt.layout.GridData;
 
 import org.eclipse.swt.layout.FillLayout;
 
+import com.google.common.base.Stopwatch;
+
 
 public class ResultComponent {
 
 	private JFreeChart chart;
 	private ChartComposite composite;
 	private Composite composite_Chart;
-	String option_chartType = "";
+	private Composite compositeTimeMeasurement;
+	private Label lblTime;
+	private String option_chartType = "";
+	
+	public static String measuredDataset = "";
+	public static String measuredChart = "";
+	public static String measuredRendering = "";
 	
 	public static final String TOPIC_NEWDATA = "TOPIC_NEWDATA";
 
@@ -41,9 +49,13 @@ public class ResultComponent {
 	void closeHandler(@UIEventTopic(TOPIC_NEWDATA) ChartProperties prop) {
 		ChartProv newchart = new ChartProv();
 		chart = newchart.createChart(prop);
-	    composite.setChart(chart);
+		composite.setChart(chart);
+		TimeMeasurement.measureChart();
+		TimeMeasurement.startMeasurement();
 	    composite.pack();
 	    composite_Chart.layout();
+		measureRendering();
+		
 	} 
 
 	/**
@@ -54,12 +66,18 @@ public class ResultComponent {
 		parent.setLayout(new GridLayout(1, false));
 		
 		//time measurement
-		Label lblTime = new Label(parent, SWT.BORDER | SWT.HORIZONTAL);
+		compositeTimeMeasurement = new Composite(parent, SWT.BORDER);
+		compositeTimeMeasurement.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		compositeTimeMeasurement.setLayout(new GridLayout(1, false));
+		
+		lblTime = new Label(compositeTimeMeasurement, SWT.HORIZONTAL);
 		lblTime.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		lblTime.setText("Dataset created in 123ms\r\nRendered in 4567ms");
+		lblTime.setText("\r\n\r\n\r\n");
+		
 		
 		ProgressBar progressBar = new ProgressBar(parent, SWT.NONE);
 		progressBar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
 		
 		//resulting chart
 		composite_Chart = new Composite(parent, SWT.NONE);
@@ -67,7 +85,6 @@ public class ResultComponent {
 		composite_Chart.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		
 		composite = new ChartComposite(composite_Chart, SWT.NONE);
-        composite.setChart(chart);
 
 	}
 	
@@ -84,5 +101,15 @@ public class ResultComponent {
 	public void setFocus() {
 		// TODO	Set the focus to control
 	}
+	
+	  private void measureRendering() {
+		    Display.getDefault().asyncExec(new Runnable() {
+		      public void run() {
+		    	TimeMeasurement.measureRendering();
+		    	lblTime.setText("Dataset created in " + measuredDataset + "\r\nChart created in " + measuredChart + "\r\nRendered in " + measuredRendering);
+		  		compositeTimeMeasurement.layout();
+		      }
+		    });
+	  }
 
 }
