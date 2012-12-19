@@ -38,7 +38,7 @@ public class ResultComponent {
 	@Inject
 	@Optional
 	void closeHandler(@UIEventTopic(TOPIC_NEWDATA) ChartProperties prop) {
-		ChartProv newchart = new ChartProv();
+		JFreeChartProvider newchart = new JFreeChartProvider();
 		chart = newchart.createChart(prop);
 		composite.setChart(chart);
 		TimeMeasurement.measureChart();

@@ -17,7 +17,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.ui.RectangleInsets;
 
 
-public class ChartProv implements ChartProvider<JFreeChart>{
+public class JFreeChartProvider implements ChartProvider<JFreeChart>{
 	
 	public JFreeChart chart;
 
