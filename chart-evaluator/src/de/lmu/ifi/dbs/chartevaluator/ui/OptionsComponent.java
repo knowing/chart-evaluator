@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Label;
 
 
 public class OptionsComponent {
@@ -27,6 +28,7 @@ public class OptionsComponent {
 	Combo comboBar_chartLib;
 	int datasetSize = 0;
 	ChartProvider.JFreeChartTypes option_chartType;
+	private Label lblDatasetSize;
 	
 
 	public OptionsComponent() {
@@ -38,7 +40,7 @@ public class OptionsComponent {
 	 */
 	@PostConstruct
 	public void createControls(Composite parent) {
-		parent.setLayout(new GridLayout(4, false));
+		parent.setLayout(new GridLayout(5, false));
 		
 		
 		//choose chart library
@@ -77,8 +79,16 @@ public class OptionsComponent {
 			public void widgetSelected(SelectionEvent e) {
 				datasetSize = scale_numData.getSelection();
 				scale_numData.setToolTipText("Size: " + datasetSize);
+				lblDatasetSize.setText("size: "+datasetSize);
+				lblDatasetSize.update();
 			}
 		});
+
+		
+		//show dataset size
+		lblDatasetSize = new Label(parent, SWT.NONE);
+		lblDatasetSize.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+		lblDatasetSize.setText("size: 0-100000");
 
 		
 		//submit choices

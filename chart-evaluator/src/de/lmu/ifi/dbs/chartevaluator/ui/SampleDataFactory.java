@@ -111,10 +111,9 @@ public class SampleDataFactory {
     }
 	
     
-	public static int randomActivity(int i) {
-		i++;
-		return (int) (Math.random() * (i - 1) + 1);
-	}
+	public static int randomActivity(int activities) {
+		  return (int) (Math.random() * 100) % activities + 1; // 100 to get bigger than 1
+		}
 	
 	
 
